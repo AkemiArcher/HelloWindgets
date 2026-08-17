@@ -11,16 +11,30 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget* parent = nullptr);
 
 private slots:
-    void onButtonClicked(); // Метод-обработчик
-    // void onButtonMsgBox(); // Метод-обработчик
+    void onButtonClicked();
+    void newFile();
+    void openFileDialog();
 private:
-    QPushButton *m_button;
-    QPushButton *m_buttonMsgBox;
-    QLabel *m_label{};
-    QLineEdit *m_lineEdit;
-    QString *m_text;
+    void createActions();
+    void createMenus();
+
+    QMenu* fileMenu;
+    QMenu* editMenu;
+
+    QAction* openAction;
+    QAction* exitAction;
+    QAction* fooAction;
+
+    QPushButton* m_button;
+    QPushButton* m_buttonMsgBox;
+
+    QString m_selectedFilePath;
+    QLabel* m_label{};
+    QLineEdit* m_lineEdit;
+    QString* m_text;
+
     int m_clicksCount{0};
 };
